@@ -1,11 +1,14 @@
 @charset "UTF-8";
 
+/* * * * * * * * *
+* base
+* * * * * * * * */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: Regular 16px/22px Myriad Pro;
+  font-family: poppins, sans-serif;
   font-size: 16px;
   color: #2b2b2b;
 }
@@ -20,10 +23,12 @@ a {
 section {
   text-align: center;
 }
-th,td {
+tbody {
+  vertical-align: inherit;
+}
+th, td {
   font-weight: normal;
   padding: 0;
-  vertical-align: top;
 }
 ul {
   margin: 0;
@@ -33,11 +38,13 @@ li {
   list-style-type: none;
 }
 
+/* * * * * * * * *
+* utility
+* * * * * * * * */
 .u-content-wrapper {
   max-width: 960px;
   margin: 0 auto;
 }
-
 .u-heading {
   position: relative;
   margin-bottom: 32px;
@@ -45,7 +52,25 @@ li {
   font-size: 36px;
   letter-spacing: 2px;
 }
+.u-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  height: 1px;
+  background: #2b2b2b;
+  transform: translateX(-50%);
+}
+.u-text {
+  padding-bottom: 40px;
+  line-height: 1.8;
+  letter-spacing: 1.4px;
+}
 
+/* * * * * * * * *
+* header
+* * * * * * * * */
 .header {
   position: relative;
   width: 100%;
@@ -55,7 +80,6 @@ li {
   text-align: center;
   color: #fff;
 }
-
 .header__nav {
   position: absolute;
   top: 40px;
@@ -63,7 +87,6 @@ li {
   width: 100%;
   height: 64px;
 }
-
 .header__nav__wrapper {
   display: flex;
   justify-content: space-between;
@@ -73,14 +96,12 @@ li {
 .header__nav__logo {
   font-size: 36px;
 }
-
 .hamburger-menu {
   position: relative;
   width: 32px;
   height: 64px;
   cursor: pointer;
 }
-
 .hamburger-menu__line,
 .hamburger-menu__line::before,
 .hamburger-menu__line::after {
@@ -91,20 +112,16 @@ li {
   height: 1px;
   background: #fff;
 }
-
 .hamburger-menu__line::before,
 .hamburger-menu__line::after {
   content: "";
 }
-
 .hamburger-menu__line {
   top: 50%;
 }
-
 .hamburger-menu__line::before {
   top: calc(50% - 8px);
 }
-
 .hamburger-menu__line::after {
   top: calc(50% + 8px);
 }
@@ -130,31 +147,7 @@ li {
   vertical-align: middle;
 }
 
-.u-heading {
-  position: relative;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  font-size: 36px;
-  letter-spacing: 2px;
-}
-
-.u-heading::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 40px;
-  height: 1px;
-  background: #2b2b2b;
-  transform: translateX(-50%);
-}
-
-.u-text {
-  padding-bottom: 40px;
-  line-height: 1.8;
-  letter-spacing: 1.4px;
-}
-
+/* Concept */
 .concept {
   width: 100%;
   padding: 80px 0;
@@ -167,11 +160,11 @@ li {
   object-fit: cover;
 }
 
+/* Work */
 .work {
   width: 100%;
   padding-top: 80px;
 }
-
 .work__contents {
   display: flex;
   flex-direction: column;
@@ -179,77 +172,59 @@ li {
   align-content: space-between;
   height: 1680px;
 }
-.work__contents__gift{
-  padding: 0px;
+.work__content {
   width: 420px;
-}
-
-.gift__image {
-  width: 420px;
-  object-fit: cover;
-}
-
-.work__contents__wedding {
-  width: 420px;
-}
-
-.wedding__image {
-  width: 420px;
-  padding-top: 80px;
-  object-fit: cover;
-}
-
-.work__contents__decoration {
-  width: 420px;
-}
-
-.decoration__image {
-  width: 420px;
-  padding-top: 120px;
-  object-fit: cover;
-}
-
-.work__contents__foryourself {
-  width: 420px;
-  padding-bottom: 100px;
-}
-
-.foryourself__image {
-  width: 420px;
-  padding-top: 80px;
-  object-fit: cover;
-}
-
-.work__h3 {
+  padding-bottom: 80px;
   text-align: left;
-  height: 40px;
-  padding-top: 16px;
+  line-height: 1.8;
 }
+.work__content:nth-of-type(1) {order: 1;}
+.work__content:nth-of-type(2) {
+  order: 3;
+  margin-top: 120px;
+}
+.work__content:nth-of-type(3) {order: 2;}
+.work__content:nth-of-type(4) {order: 4;}
 
-.work__contents p {
-  text-align: left;
-  line-height: 28px;
-  height: 84px;
+.work__content__image {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.work__content__heading {
+  font-size: 24px;
+}
+.work__content__text {
   letter-spacing: 1.5px;
 }
 
+/* Florist */
+
 .florist {
   width: 100%;
-  height: 651px;
   padding-top: 80px;
   background: linear-gradient(#ededed 60%, #fff 40%);
 }
-
-.florist__contents__wrapper {
+.florist__persons {
   display: flex;
   justify-content: space-between;
 }
-
-.florist__contents {
+.florist__person {
   width: 300px;
   padding-bottom: 40px;
   text-align: left;
   line-height: 1.8;
+  font-size: 0;
+}
+.florist__person__image {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.florist__person__name {
+  font-size: 24px;
+}
+.florist__person__introduce {
+  font-size: 16px;
+  letter-spacing: 1.5px;
 }
 
 /* shop information */
@@ -284,13 +259,12 @@ li {
 
 /* Contact us */
 
-.contact {
+.contactUs {
   width: 100%;
   padding: 80px 0;
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255,0.3)), url('../img/contact_us.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('../img/contact_us.png');
   background-size: cover;
 }
-
 .btn__contact {
   position: relative;
   display: inline-block;
@@ -303,14 +277,12 @@ li {
   background: #fff;
   font-size: 20px;
 }
-
 .btn__contact::before,
 .btn__contact::after {
   content: '';
   position: absolute;
   border-radius: 2px;
 }
-
 .btn__contact::before {
   top: 30px;
   left: 85px;
@@ -318,15 +290,6 @@ li {
   height: 20px;
   border: 1px solid #2b2b2b;
 }
-
-.btn__contact::before {
-  top: 30px;
-  left: 85px;
-  width: 30px;
-  height: 20px;
-  border: 1px solid #2b2b2b;
-}
-
 .btn__contact::after {
   top: 21px;
   left: 90px;
@@ -335,4 +298,129 @@ li {
   border-right: 1px solid #2b2b2b;
   border-bottom: 1px solid #2b2b2b;
   transform: rotate(45deg);
+}
+/* footer */
+
+.footer {
+  width: 100%;
+  text-align: center;
+}
+.footer__copyright {
+  line-height: 40px;
+  letter-spacing: 1.4px;
+}
+
+/* レスポンシプ対応 */
+@media(max-width: 840px) {
+  body {
+    font-size: 14px;
+  }
+
+  .u-content-wrapper {
+    width: calc(100% - 32px);
+  }
+  .u-heading {
+    font-size: 28px;
+  }
+  .u-text {
+    text-align: center;
+    padding-bottom: 32px;
+  }
+  .u-display__pc {
+    display: none;
+  }
+  
+  /* header */
+  
+  .header {
+    height: 355px;
+    padding-top: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/header.png) 50%;
+    background-size: cover;
+  }
+  .header__nav {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+  .header__nav__logo {
+    font-size: 24px;
+  }
+  .header__title {
+    padding-top: 120px;
+    font-size: 64px
+  }
+  /* concept */
+  .concept {
+    padding: 40px 0;
+    background: linear-gradient(#fff 75%, #ededed 25%);
+  }
+
+  /* work */
+
+  .work {
+    position: relative;
+    padding: 40px 0 24px;
+  }
+  .work__contents__wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    /* -webkit-overflow-scrolling: touch; */
+  }
+   /* .work__contents__wrapper::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    border-radius: 8px;
+  }
+  .work__contents__wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.15);
+    border-radius: 8px;
+  }
+  .work__contents__wrapper::-webkit-scrollbar-track {
+    background: rgba(0,0,0,.1);
+    border-radius: 8px;
+  } */
+  .work__contents {
+    display: block;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: auto;
+  }
+  .work__content {
+    width: 80vw;
+    padding-bottom: 40px;
+  }
+
+  .work__content:nth-of-type(2) {
+    margin-top: 0px;
+    margin-left: auto;
+  }
+  .work__content:nth-of-type(4) {
+    margin-left: auto;
+  }
+
+
+    /* florist */
+  
+  .florist__persons {
+    display: block;
+  }
+  .florist__person {
+    width: auto;
+  }
+
+  /* shopinformation */
+
+  .shopinformation__contents {
+    display: block;
+
+  }
+
+  .shopinformation__image,
+  .shopinformation__table {
+    width: 100%;
+  }
+
+  /* contact us */
+
 }
